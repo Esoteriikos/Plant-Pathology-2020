@@ -1,16 +1,17 @@
-import models
 import csv
-import pandas as pd
+import models
 from load_process_data import data_from_id
 
+images_path = r'plant-pathology-2020-fgvc7\images\\'
 test_path = r"plant-pathology-2020-fgvc7\test.csv"
 
-sub_path = r"output.csv"
+sub_path = r"output2.csv"
 
 model = models.model_efn()
-model.load_weights(r'trained_model\efficient_net\modelv2-1-57.h5')
+model.load_weights(r'trained_model\modelv2-1-27.h5')
 
 print("Loading Test data")
+
 test = data_from_id(images_path=images_path, csv_path=test_path, img_shape=(150, 150))
 x_test = test.image_target_array(image_label='image_id', random_state=-1)
 
